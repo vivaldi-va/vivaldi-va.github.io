@@ -431,3 +431,8 @@ a:focus {
       float: left; }
     .pagination-Item.older {
       float: right; }
+
+@media screen and (min-width: 60em) {
+  .pagination {
+    width: 75%;
+    padding: 0 0 0 25%; } }
