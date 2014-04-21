@@ -1,0 +1,433 @@
+/* 
+The main SCSS file for everything, yep
+*/
+body {
+  background: #f7f7f7; }
+
+.wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 2em; }
+
+html {
+  font-size: 10px; }
+
+body {
+  font: 400 1.6rem/1.5 'Droid Sans';
+  color: #4f4f4f; }
+
+a,
+a:link,
+a:visited {
+  color: #00acc5;
+  text-decoration: none; }
+
+a:hover,
+a:active,
+a:focus {
+  border-bottom: 1px solid rgba(0, 172, 197, 0.5); }
+
+.highlight {
+  background-color: #073642;
+  color: #93a1a1;
+  border: 1px solid #2d6472;
+  padding: 1em;
+  overflow-x: scroll;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; }
+
+.highlight .c {
+  color: #586e75 !important;
+  font-style: italic !important; }
+
+.highlight .cm {
+  color: #586e75 !important;
+  font-style: italic !important; }
+
+.highlight .cp {
+  color: #586e75 !important;
+  font-style: italic !important; }
+
+.highlight .c1 {
+  color: #586e75 !important;
+  font-style: italic !important; }
+
+.highlight .cs {
+  color: #586e75 !important;
+  font-weight: bold !important;
+  font-style: italic !important; }
+
+.highlight .err {
+  color: #dc322f !important;
+  background: none !important; }
+
+.highlight .k {
+  color: #cb4b16 !important; }
+
+.highlight .o {
+  color: #93a1a1 !important;
+  font-weight: bold !important; }
+
+.highlight .p {
+  color: #93a1a1 !important; }
+
+.highlight .ow {
+  color: #2aa198 !important;
+  font-weight: bold !important; }
+
+.highlight .gd {
+  color: #93a1a1 !important;
+  background-color: #372c34 !important;
+  display: inline-block; }
+
+.highlight .gd .x {
+  color: #93a1a1 !important;
+  background-color: #4d2d33 !important;
+  display: inline-block; }
+
+.highlight .ge {
+  color: #93a1a1 !important;
+  font-style: italic !important; }
+
+.highlight .gr {
+  color: #aa0000; }
+
+.highlight .gh {
+  color: #586e75 !important; }
+
+.highlight .gi {
+  color: #93a1a1 !important;
+  background-color: #1a412b !important;
+  display: inline-block; }
+
+.highlight .gi .x {
+  color: #93a1a1 !important;
+  background-color: #355720 !important;
+  display: inline-block; }
+
+.highlight .go {
+  color: #888888; }
+
+.highlight .gp {
+  color: #555555; }
+
+.highlight .gs {
+  color: #93a1a1 !important;
+  font-weight: bold !important; }
+
+.highlight .gu {
+  color: #6c71c4 !important; }
+
+.highlight .gt {
+  color: #aa0000; }
+
+.highlight .kc {
+  color: #859900 !important;
+  font-weight: bold !important; }
+
+.highlight .kd {
+  color: #268bd2 !important; }
+
+.highlight .kp {
+  color: #cb4b16 !important;
+  font-weight: bold !important; }
+
+.highlight .kr {
+  color: #d33682 !important;
+  font-weight: bold !important; }
+
+.highlight .kt {
+  color: #2aa198 !important; }
+
+.highlight .n {
+  color: #268bd2 !important; }
+
+.highlight .na {
+  color: #268bd2 !important; }
+
+.highlight .nb {
+  color: #859900 !important; }
+
+.highlight .nc {
+  color: #d33682 !important; }
+
+.highlight .no {
+  color: #b58900 !important; }
+
+.highlight .ni {
+  color: purple; }
+
+.highlight .nl {
+  color: #859900 !important; }
+
+.highlight .ne {
+  color: #268bd2 !important;
+  font-weight: bold !important; }
+
+.highlight .nf {
+  color: #268bd2 !important;
+  font-weight: bold !important; }
+
+.highlight .nn {
+  color: #b58900 !important; }
+
+.highlight .nt {
+  color: #268bd2 !important;
+  font-weight: bold !important; }
+
+.highlight .nx {
+  color: #b58900 !important; }
+
+.highlight .bp {
+  color: #999999; }
+
+.highlight .vc {
+  color: teal; }
+
+.highlight .vg {
+  color: #268bd2 !important; }
+
+.highlight .vi {
+  color: #268bd2 !important; }
+
+.highlight .nv {
+  color: #268bd2 !important; }
+
+.highlight .w {
+  color: #bbbbbb; }
+
+.highlight .mf {
+  color: #2aa198 !important; }
+
+.highlight .m {
+  color: #2aa198 !important; }
+
+.highlight .mh {
+  color: #2aa198 !important; }
+
+.highlight .mi {
+  color: #2aa198 !important; }
+
+.highlight .mo {
+  color: #009999; }
+
+.highlight .s {
+  color: #2aa198 !important; }
+
+.highlight .sb {
+  color: #dd1144; }
+
+.highlight .sc {
+  color: #dd1144; }
+
+.highlight .sd {
+  color: #2aa198 !important; }
+
+.highlight .s2 {
+  color: #2aa198 !important; }
+
+.highlight .se {
+  color: #dc322f !important; }
+
+.highlight .sh {
+  color: #dd1144; }
+
+.highlight .si {
+  color: #268bd2 !important; }
+
+.highlight .sx {
+  color: #dd1144; }
+
+.highlight .sr {
+  color: #2aa198 !important; }
+
+.highlight .s1 {
+  color: #2aa198 !important; }
+
+.highlight .ss {
+  color: #990073; }
+
+.highlight .il {
+  color: #009999; }
+
+.highlight div .gd, .highlight div .gd .x, .highlight div .gi, .highlight div .gi .x {
+  display: inline-block;
+  width: 100%; }
+
+.header {
+  color: inherit; }
+  .header-SiteHeader {
+    margin: 3.2rem 0;
+    font-size: 2em;
+    font-weight: 400;
+    color: #d22602;
+    text-align: center;
+    text-transform: capitalize; }
+    .header-SiteHeader a {
+      color: inherit; }
+      .header-SiteHeader a:hover {
+        border: none; }
+    .header-SiteHeader_HeadShot {
+      display: block;
+      max-width: 128px;
+      margin: 4em auto 0;
+      border: 6px solid #dfdfdf;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%; }
+  .header-SiteBlurb {
+    display: block;
+    max-width: 33em;
+    margin: 0 auto;
+    font-size: 1.15em;
+    color: #999999;
+    text-align: center; }
+  .header-SiteNav {
+    margin: 3.2rem 0 0;
+    font-size: 1.15em;
+    text-align: center; }
+    .header-SiteNav_Link {
+      color: #4f4f4f; }
+
+.posts {
+  margin: 12.8rem 0 0; }
+  .posts-Post + .posts-Post {
+    margin: 6.4rem 0 0; }
+  .posts-Post_Content > p:first-of-type {
+    font-weight: 400;
+    font-size: 1.15em;
+    font-family: 'Droid Serif'; }
+  .posts-Post_Content h2 {
+    margin: 6.4rem 0 0;
+    font-size: 1.35em;
+    font-weight: 700;
+    font-family: "Droid Serif"; }
+  .posts-Post_Content h3 {
+    margin: 3.2rem 0 0;
+    font-size: 1em;
+    font-weight: 700;
+    text-transform: uppercase; }
+  .posts-Post_Content blockquote {
+    display: block;
+    position: relative;
+    margin: 3.2rem 0 3.2rem 7.5rem;
+    font-size: 1.25em;
+    font-weight: 700;
+    font-family: 'Droid Serif';
+    line-height: 1.25;
+    color: #d22602; }
+    .posts-Post_Content blockquote:before {
+      content: '';
+      position: absolute;
+      left: -7.5rem;
+      top: 0;
+      width: 6.4rem;
+      height: 5.6rem;
+      background-image: url("/assets/images/quote.svg");
+      background-size: 100% auto;
+      background-position: 50% 100%; }
+  .posts-PostHeader_Title {
+    font-size: 2em;
+    font-weight: 400;
+    margin: 0; }
+    .posts-PostHeader_Title a {
+      color: #4f4f4f !important;
+      border: none; }
+  .posts-PostHeader_Date {
+    color: #999999; }
+  .posts-PostFooter_MoreButton {
+    display: block;
+    margin: 3.2rem 0 0;
+    padding: 0.5em 1em;
+    background: #d22602;
+    color: white !important;
+    text-align: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px; }
+    .posts-PostFooter_MoreButton:hover, .posts-PostFooter_MoreButton:active, .posts-PostFooter_MoreButton:focus {
+      background: #fd340a;
+      border: none; }
+
+.related {
+  margin: 12.8rem 0; }
+  .related-Title {
+    margin: 0 0 3.2rem;
+    font-size: 1.5em;
+    font-family: 'Droid Serif';
+    font-weight: 700; }
+  .related-PostList {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    .related-PostList_Item {
+      float: left;
+      width: 100%;
+      margin: 0 0 2em;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+      .related-PostList_Item-title {
+        margin: 0;
+        font-size: 1em; }
+      .related-PostList_Item-date {
+        color: #999999;
+        font-weight: 700; }
+
+@media screen and (min-width: 60em) {
+  .posts-PostHeader {
+    position: relative;
+    padding: 0 0 0 25%; }
+    .posts-PostHeader_Date {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 25%;
+      padding: 0 1em 0 0;
+      color: #cccccc;
+      font-size: 2em;
+      text-align: right;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+  .posts-Post + .posts-Post {
+    margin: 12.8rem 0 0; }
+  .posts-Post_Content {
+    padding: 0 0 0 25%; }
+  .posts-PostFooter_MoreButton {
+    display: inline-block;
+    width: auto;
+    margin-top: 1em;
+    margin-left: 25%; }
+
+  .related {
+    margin: 12.8rem 0 12.8rem 25%; }
+    .related-Title {
+      margin: 0 0 3.2rem;
+      font-size: 1.5em;
+      font-family: 'Droid Serif';
+      font-weight: 700; }
+    .related-PostList {
+      margin: 0;
+      padding: 0;
+      list-style: none; }
+      .related-PostList_Item {
+        float: left;
+        width: 33%;
+        padding: 0 2em 0 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box; } }
+.pagination {
+  float: left;
+  width: 100%;
+  margin: 12.8rem 0 2em; }
+  .pagination-Item {
+    display: inline-block; }
+    .pagination-Item.disabled {
+      color: #999999; }
+    .pagination-Item.newer {
+      float: left; }
+    .pagination-Item.older {
+      float: right; }

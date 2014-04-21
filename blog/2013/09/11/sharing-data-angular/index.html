@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+<head>
+	<link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+	<title>
+		
+		Global Scope. Sharing data between controllers in Angular with services &middot; neueblog
+		
+	</title>
+
+	<!-- CSS -->
+	<!-- build:css ./assets/stylesheets/main.css -->
+	<link rel="stylesheet" href="/_bower_components/normalize-css/normalize.css">
+	<link rel="stylesheet" href="/assets/stylesheets/main.css">
+	<!-- endbuild -->
+
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono|Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	<!-- build:js ./assets/javascript/all.min.js -->
+	<!-- <script src="/assets/javascript/javascript.js"></script> -->
+	<!-- <script src="/assets/javascript/somejavascript.js"></script> -->
+	<!-- endbuild -->
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png">
+	<link rel="shortcut icon" href="/assets/favicon.ico">
+
+	<!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+<body>
+
+<header id="top">
+	<div class="wrapper">
+		<img class="header-SiteHeader_HeadShot" src="https://pbs.twimg.com/profile_images/378800000146282949/dfd7e1f0f355699655f02b2bd09702f5.jpeg" alt="My current twitter avatar"/>
+		<h1 class="header-SiteHeader">
+			<a href="/">zaccary price</a>
+		</h1>
+		  <span class="header-SiteBlurb">
+			  Maecenas volutpat molestie condimentum. Proin in
+			  orci non odio euismod tincidunt pellentesque a urna.
+		  </span>
+	</div>
+
+	<div class="wrapper">
+		<nav class="header-SiteNav">
+			<a class="header-SiteNav_Link" href="https://twitter.com/wildtangoweb">@wildtangoweb</a>
+		</nav>
+	</div>
+</header>
+
+<section class="posts">
+	<div class="wrapper">
+		<article class="posts-Post">
+			<header class="posts-PostHeader">
+				<h1 class="posts-PostHeader_Title">
+					Global Scope. Sharing data between controllers in Angular with services
+				</h1>
+
+				<span class="posts-PostHeader_Date">11 Sep 2013</span>
+			</header>
+			<div class="posts-Post_Content">
+				<p>Services in Angular are intended to be injected into controllers, the <code>$scope</code> and <code>$http</code> services are examples of this, and are very powerful and exceptionally useful things when it comes to making larger-scale applications using the framework. Essentially, they work by &#39;injecting&#39; a collection of functions into a controller to be used when required, which makes for neater and DRYer code over all. Yet, it&#39;s not only functions that can be injected in this way, but also static objects. Basically you can have variables in there too which can be referred to and used in exactly the same way as you&#39;d use functions. The advantage with using variables, for lack of a better description, in services is that their scope transcends that of the controller you inject them into. Hence, you can define a variable that can have a &#39;global&#39; scope within your application.</p>
+
+<!--more-->
+
+<p>First, lets look at creating an angular service. A service is created thusly:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="nx">fooBar</span><span class="s1">&#39;, []);</span>
+<span class="s1">    app.factory(&#39;</span><span class="nx">myService</span><span class="err">&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">myFunction</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nx">foo</span> <span class="o">+</span> <span class="s2">&quot; bar&quot;</span><span class="p">;</span>
+                <span class="p">},</span>
+            <span class="nx">anotherFunction</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">hello</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">hello</span> <span class="o">+</span> <span class="s2">&quot; world&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+    <span class="p">});</span>
+</code></pre></div>
+
+<p>as you can see, it&#39;s simply an array of functions. you can have as many as you please, all of which work exactly the same as you would typically use a function. You inject your newly made service into your controller as follows:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;FooCtrl&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">myService</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myService</span><span class="p">.</span><span class="nx">myFunction</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">));</span>
+    <span class="p">});</span>
+</code></pre></div>
+
+<p>Simple!</p>
+
+<p>However, now it gets interesting. You can defined a variable, so to speak, in exactly the same way you define a function. only without the function part. Basically just create an associative array instead of a function. It can have as much or as little data as you&#39;d like. Such as:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;myService&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">myFunction</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">foo</span> <span class="o">+</span> <span class="s2">&quot; bar&quot;</span><span class="p">;</span>
+            <span class="p">},</span>
+            <span class="nx">anotherFunction</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">hello</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">hello</span> <span class="o">+</span> <span class="s2">&quot; world&quot;</span><span class="p">;</span>
+            <span class="p">},</span>
+            <span class="nx">aVariable</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">foo</span><span class="o">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+                <span class="nx">hello</span><span class="o">:</span> <span class="err">&#39;</span><span class="nx">world</span>
+            <span class="p">},</span>
+            <span class="nx">anotherVariable</span><span class="o">:</span> <span class="mi">9001</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+</code></pre></div>
+
+<p>You can refer to these variables as you would the functions. Just use the JSON style dot notation.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s2">&quot;FooCtrl&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">myService</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myService</span><span class="p">.</span><span class="nx">myFunction</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">));</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;hello &quot;</span> <span class="o">+</span> <span class="nx">myService</span><span class="p">.</span><span class="nx">aVaraible</span><span class="p">.</span><span class="nx">hello</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myService</span><span class="p">.</span><span class="nx">anotherVariable</span><span class="p">);</span>
+    <span class="p">});</span>
+</code></pre></div>
+
+<p>You can re-define them, add to them and modify their values as you would any other JSON array, or similar get-up. It serves as an effective and efficient way to share information around your app during run-time. An example usage that I have found most effective is populating them during an init phase from a value stored in localStorage, and syncing the two as they&#39;re altered. This itself gives good data-loss protection upon the event of a need to reload the page, whereby the information in the service is restored to its initial values. In any case, it has various uses, without you having to resort to the <code>$rootScope</code>.</p>
+
+			</div>
+		</article>
+
+		<div class="related">
+		  <h2 class="related-Title">Related Posts</h2>
+		  <ul class="related-PostList">
+			
+			  <li class="related-PostList_Item">
+				<small class="related-PostList_Item-date">08 Aug 2013</small>
+				<h3 class="related-PostList_Item-title">
+				  <a href="/blog/2013/08/08/geolocation-in-angular-services/">
+					Using promises to return geopositioning data from an angular service
+				  </a>
+				</h3>
+			  </li>
+			
+			  <li class="related-PostList_Item">
+				<small class="related-PostList_Item-date">03 Nov 2012</small>
+				<h3 class="related-PostList_Item-title">
+				  <a href="/blog/2012/11/03/on-creating-a-mobile-web/">
+					On Creating a Mobile Web
+				  </a>
+				</h3>
+			  </li>
+			
+			  <li class="related-PostList_Item">
+				<small class="related-PostList_Item-date">08 Sep 2013</small>
+				<h3 class="related-PostList_Item-title">
+				  <a href="/blog/2013/09/08/new-web-tools/">
+					Automate your workflow. Yeoman, NPM and Bower for easy front-end development
+				  </a>
+				</h3>
+			  </li>
+			
+		  </ul>
+		</div>
+	</div>
+</section>
+
+
+</body>
+</html>

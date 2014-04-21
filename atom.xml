@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>neueblog</title>
+ <link href="vivaldi-va.github.io/atom.xml" rel="self"/>
+ <link href="vivaldi-va.github.io/"/>
+ <updated>2014-04-21T21:59:35+03:00</updated>
+ <id>vivaldi-va.github.io</id>
+ <author>
+   <name></name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Avoiding mystery: Missing UX in password fields on mobile devices</title>
+   <link href="vivaldi-va.github.io/blog/2013/09/21/password-revealing/"/>
+   <updated>2013-09-21T00:00:00+03:00</updated>
+   <id>vivaldi-va.github.io/blog/2013/09/21/password-revealing</id>
+   <content type="html">&lt;p&gt;Mobile keyboard interaction should be a process done as little as possible, when not writing for content such as a text message or the odd email. Keyboards on a mobile device, particularly phones and particularly touch interfaces at that, are clumsy affairs and are almost entirely dependant on the use of auto-correct in some form or another to return the intended result. Such a function is, however, not available in certain cases such as writing a url in the browser and perhaps most frustratingly in forms. Password inputs are by far the most irritating thing to have to deal with on a mobile device, and while lengthy cookie expiration times or applications retaining your login session indefinitely, they are still an unavoidable thing.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Making mistakes with touch keyboard is common and expected, the issue is with a masked input is you can&amp;#39;t see these mistakes until it’s too late, by which time a user is going to be huffing and puffing and generally unnecessarily frustrated by the experience. Yet while password forms are masked, this performs no added security function. It simply masks the text with another character to prevent prying eyes from grabbing your sensitive information. While this is indeed important, it is not necessary all the time, and by removing this mask you can ensure what you have blindly typed is actually correct, before you go and submit. Not only does this remove the rage of having to retype your password over and over, it gives a user a certain comfort.&lt;/p&gt;
+
+&lt;p&gt;Why not then add an ability to reveal your password, if only temporarily? One would only need a moment to check their password is correct before they hide it again. Or if they so choose, they can simply input it as visual text. It’s all dependant on their situation, which changes as they go from place to place. Even still, due to the size of a mobile screen, particularly a phone, it would require an onlooker to sport a camera with a telescopic lens to grab your sensitive information.&lt;/p&gt;
+
+&lt;p&gt;Adding this single feature to a login or sign-in form would be majorly beneficial. It has been for me in applications I have developed and now I can&amp;#39;t help but fail to understand the lack of it anywhere else. Microsoft has indeed added such a function to password forms, both HTML and in-app and I think it works rather well.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Global Scope. Sharing data between controllers in Angular with services</title>
+   <link href="vivaldi-va.github.io/blog/2013/09/11/sharing-data-angular/"/>
+   <updated>2013-09-11T00:00:00+03:00</updated>
+   <id>vivaldi-va.github.io/blog/2013/09/11/sharing-data-angular</id>
+   <content type="html">&lt;p&gt;Services in Angular are intended to be injected into controllers, the &lt;code&gt;$scope&lt;/code&gt; and &lt;code&gt;$http&lt;/code&gt; services are examples of this, and are very powerful and exceptionally useful things when it comes to making larger-scale applications using the framework. Essentially, they work by &amp;#39;injecting&amp;#39; a collection of functions into a controller to be used when required, which makes for neater and DRYer code over all. Yet, it&amp;#39;s not only functions that can be injected in this way, but also static objects. Basically you can have variables in there too which can be referred to and used in exactly the same way as you&amp;#39;d use functions. The advantage with using variables, for lack of a better description, in services is that their scope transcends that of the controller you inject them into. Hence, you can define a variable that can have a &amp;#39;global&amp;#39; scope within your application.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;First, lets look at creating an angular service. A service is created thusly:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fooBar&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;, []);&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    app.factory(&amp;#39;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;myFunction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot; bar&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;anotherFunction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hello&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot; world&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;as you can see, it&amp;#39;s simply an array of functions. you can have as many as you please, all of which work exactly the same as you would typically use a function. You inject your newly made service into your controller as follows:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;FooCtrl&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myFunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Simple!&lt;/p&gt;
+
+&lt;p&gt;However, now it gets interesting. You can defined a variable, so to speak, in exactly the same way you define a function. only without the function part. Basically just create an associative array instead of a function. It can have as much or as little data as you&amp;#39;d like. Such as:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myService&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;myFunction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot; bar&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;anotherFunction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hello&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot; world&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;aVariable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;bar&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;world&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;anotherVariable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9001&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can refer to these variables as you would the functions. Just use the JSON style dot notation.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;FooCtrl&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myFunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;hello &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;aVaraible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;anotherVariable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can re-define them, add to them and modify their values as you would any other JSON array, or similar get-up. It serves as an effective and efficient way to share information around your app during run-time. An example usage that I have found most effective is populating them during an init phase from a value stored in localStorage, and syncing the two as they&amp;#39;re altered. This itself gives good data-loss protection upon the event of a need to reload the page, whereby the information in the service is restored to its initial values. In any case, it has various uses, without you having to resort to the &lt;code&gt;$rootScope&lt;/code&gt;.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Automate your workflow. Yeoman, NPM and Bower for easy front-end development</title>
+   <link href="vivaldi-va.github.io/blog/2013/09/08/new-web-tools/"/>
+   <updated>2013-09-08T00:00:00+03:00</updated>
+   <id>vivaldi-va.github.io/blog/2013/09/08/new-web-tools</id>
+   <content type="html">&lt;p&gt;Modern web development has moved on from notepad and simple HTML, it now encompasses a whole wealth of technologies built upon each other to deliver better, neater and faster end-results. Package and dependency management and task automation are the big players that can assist with anything from a small web page to a full blown web-app. I shall describe 4 of my favorite such tools which can provide the groundwork for setting up any kind of web project, with Yeoman setting up a bootstrap project, installing required tools with NPM and code libraries with Bower, then compiling your production version with Grunt.js. It’s really too easy.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2&gt;NPM&lt;/h2&gt;
+
+&lt;p&gt;NPM, or Node Package Manager, is the package manager offered by Node.js. Simply put, it is a great repository for all manner of development tools and utilities. Minification, concatenation, image optimisation, testing and also all the other tools I will mention herein, are installed using NPM. Node packages can be installed in two ways using NPM, either by installing as a local resource, or as a global program.&lt;/p&gt;
+
+&lt;p&gt;The former deposits the relevant scripts in your project folder and creates a JSON configuration file in the root directory, you can find it as ‘package.json’. This file is simply a JSON array containing the package names delegated as dependencies, as well as other configuration information that may be of importance. This method works for adding project-specific tool dependencies, as it will automatically download all the required files and store them locally when you run ‘NPM install’ through your command line in your project root directory. When sharing a project or committing it to a version control system, this file is all you need.&lt;/p&gt;
+
+&lt;p&gt;The latter enables you to install scripts globally, and gives them a command that can be run in your CLI. these are installed with the ‘-g’ option.&lt;/p&gt;
+
+&lt;h2&gt;Yeoman leads the way&lt;/h2&gt;
+
+&lt;p&gt;Yeoman—installed using NPM as the global package ‘yo’—is a tool to automate the creation of a project and it’s associated dependencies. Specifically, it will generate all the required files for a particular development environment, be it a simple website—perhaps using HTML5 Boilerplate for instance—or AngularJS, Backbone or whatever else. There are an abundance of generators available, for every web framework or set-up I have ever heard of, and a lot I haven’t, so you will unlikely be starved of choice. If you’re interested in browsing such generators, run a search with ‘npm search generator-’ in your command line.&lt;/p&gt;
+
+&lt;p&gt;Simply put, Yeoman will add the bootstrap files to the current directory and use package managers to download dependencies. It is wonderful for setting up the prep work, which is usually a tedious effort of creating directory structures and downloading various libraries or setting up configuration files. But, thankfully, with this you largely avoid this tedium. It will set you up with your required files, configuration files for NPM, Bower as well as Grunt.js, which is nice, allowing you to dive right into the important stuff with no hassle.&lt;/p&gt;
+
+&lt;h2&gt;Bower for libraries.&lt;/h2&gt;
+
+&lt;p&gt;Bower is a package manager installed through NPM, though unlike NPM itself, it simply works by downloading a directory from a git repository and saving it in your project folder. It does, however, function similarly to NPM as it creates a JSON file, which is shared along with the rest of your project files, and can be used to download library dependencies all at once. It is an essential tool for keeping your libraries organized and up to date, I think, and is one of the tools that has most helped me in recent times.&lt;/p&gt;
+
+&lt;h2&gt;Grunt is the master builder&lt;/h2&gt;
+
+&lt;p&gt;Grunt.js, again installed through NPM, is a task runner which, unsurprisingly, works by running a list of tasks consecutively. It’s use comes into full fruition when preparing a project for production, as it can automate all the testing, optimization and cache-busting for you with no hassle. Any NPM-installable tool can be utilized in Grunt, all that needs doing is to configure it right, and tune your process to be in the right sequence. Aside from installing grunt locally, you can install it’s command line access via NPM using the global package ‘grunt-cli’.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Using promises to return geopositioning data from an angular service</title>
+   <link href="vivaldi-va.github.io/blog/2013/08/08/geolocation-in-angular-services/"/>
+   <updated>2013-08-08T00:00:00+03:00</updated>
+   <id>vivaldi-va.github.io/blog/2013/08/08/geolocation-in-angular-services</id>
+   <content type="html">&lt;p&gt;Due to an issue with the way angular handles dom changes, there is an interesting problem when
+attempting to send a position object from an angular service using a deferred promise.
+If you treated the geolocation API as an asynchronous function&amp;mdash;which it is in practice&amp;mdash;and
+used the $q service to return a deferred promise from an angular service, nothing will happen when you
+enact the .then() method in your controller.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;If one were to use the geolocation functions within a controller, and is not intending to use the callback directly to handle the returned information – which in my opinion is the right way to do it –  one must use the $apply method, which is a method within the $scope service, to let angular know that the information has actually been retrieved from the API.&lt;/p&gt;
+
+&lt;p&gt;However, since you can not use $scope within a service, you must use $rootScope instead, then use $apply from that.&lt;/p&gt;
+
+&lt;p&gt;e.g.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;   &lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;geolocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getCurrentLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;$rootScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;deferred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ostosnero development blog 02 - Character Encoding Redux & SQL functions</title>
+   <link href="vivaldi-va.github.io/blog/2012/12/07/ostosnero-development-blog-02/"/>
+   <updated>2012-12-07T00:00:00+02:00</updated>
+   <id>vivaldi-va.github.io/blog/2012/12/07/ostosnero-development-blog-02</id>
+   <content type="html">&lt;h2&gt;Character Encoding: Redux&lt;/h2&gt;
+
+&lt;p&gt;Character encoding reared its ugly head again soon after my last apparent fix,
+only to not be fixed at all in any way. I was forced to abandon my efforts to fix
+it to focus attention on more pressing issues so it remained in the shadows,
+though a persisting pain in my neck.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;However, due to increasing need for this to be a
+resolved issue–namely the need for a website aimed at a
+Finnish user-base who would expect accented characters to work flawlessly–I
+resumed my efforts to fix this issue. After some time Googling the issues related
+to UTF-8 encoding–of which there are many–I came upon the realization that not only
+does the server need to be encoded properly, as well as each table in the database
+(and each column within each of these) and the html charset, the very program used
+to edit the files, or at least initially save them, must be set to the correct encoding as well.&lt;/p&gt;
+
+&lt;p&gt;While I was assured, again, that this was the solution I needed,
+it wasn’t immediately the case. I was at a loss, I had simply ran out of things
+that could influence the character encoding. There simply weren’t any more parties
+that could be at fault, unless my computer itself was wrongly encoding everything, or
+the planets were not correctly aligned. It was at this point that I was contemplating running
+many longwinded and tedious test using different character sets at various levels in my system, though thankfully
+this wasn’t required as divine intervention occurred. It seemed I simply needed to essentially re-build the files that were at fault. For the MySQL database, this meant backing the database contents up and dropping the whole thing, and re-importing it with UTF-8 set to default. Next, I needed to “re-build” my static content in the HTML by copying the content of the files and deleting the whole thing, then recreating it under UTF-8 encoding. The original content was pasted back in and saved as the original file name.&lt;/p&gt;
+
+&lt;p&gt;At last! Not only did the server return correct content, the static content was displaying the characters correctly and the various forms (bar one, much to my frustration) were sending the right content to the server, which was receiving it correctly.&lt;/p&gt;
+
+&lt;h2&gt;A Revelation in the Sorting Algorithm&lt;/h2&gt;
+
+&lt;p&gt;This issue almost caused permanent brain damage and/or destruction of property due to it constantly failing at every corner. Either it be from my overestimating of the abilities of PHP, or an inability to comprehend the required logic. It all seemed so simple, just sort a few numbers, but it turned into a nightmare.&lt;/p&gt;
+
+&lt;p&gt;After all else failed, I came across something which pulled me from the abbess of frustration. To output a sorted value in MySQL was, as it turned out, very simple. Using the min() or max() functions in the SELECT region of the query, combined with grouping the outputted rows using a particular column, I could select the lowest price attached to each product.&lt;/p&gt;
+
+&lt;p&gt;Using min(table.column) along with GROUP BY anotherTable.column, an entire function was rendered redundant. This greatly simplified the logic of the whole thing and, much to my liking, made the whole thing much easier to comprehend.&lt;/p&gt;
+
+&lt;p&gt;After some testing it appears to work, though with only limited data in the database it remains unclear as to how effective it truly is.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ostosnero development blog 01</title>
+   <link href="vivaldi-va.github.io/blog/2012/11/28/ostosnero-dev-blog-01/"/>
+   <updated>2012-11-28T00:00:00+02:00</updated>
+   <id>vivaldi-va.github.io/blog/2012/11/28/ostosnero-dev-blog-01</id>
+   <content type="html">&lt;h2&gt;utf-8 encoding and drama&lt;/h2&gt;
+
+&lt;p&gt;After many hours of trouble, I have finally figured out the issue with encoding using UTF-8 Unicode on the HTML-rendered pages.
+While the ISO Latin1 encoding worked partially, it only encoded static or pre-rendered content, not dynamic
+content such as that added through AJAX. I troubleshooted this at various points, changing the collation in
+the database to be uniform, first as latin1, then as Unicode.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;I then attempted to change the default encoding of the jQuery AJAX calls to latin1, again to no avail.
+Finally, I stumbled across a Stack Overflow post saying it was a case of mis-encoding the information
+on the database, and it was not being interpreted on the browser correctly no matter what I did. It would
+seem that it is required that there be a universally, and initially, set form of encoding that will apply,
+perhaps in the background, to all the text information stored in it. In any case, using&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;mysql_set_charset(&amp;quot;utf8&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;seemed to fix it for all the text rendered thereafter. This also included the text sent via
+POST or GET protocols, though this turned out to be a non-issue, as it was my own ineptitude
+that did not realize it was being properly encoded though serialization and interpretation by the POST array in PHP.&lt;/p&gt;
+
+&lt;h2&gt;ajax loading animations&lt;/h2&gt;
+
+&lt;p&gt;Loading a “spinner” as a gif or animated PNG, which I only recently learned existed, as the page loads, preloading with:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;$.fn.preload = function() {
+                    this.each(function(){
+                        $(&amp;#39;&amp;#39;)[0].src = this;
+                    });
+                }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Used via:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;$([&amp;#39;./img/loading.png&amp;#39;]).preload();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then, use the .html() function (important so it overrides what ever residual content is in there from the last search)
+in jQuery on the popup window or container you want to have stuff loaded in, insert the HTML for an image with the
+animated image file as the src field. This will also act as an initial ‘show’ function. When the AJAX call is completed,
+ put a call to hide (with optional fading) in the success function. It then shows the spinner until there is something
+ returned from the PHP backend, or wherever it is calling to, after which it disappears.&lt;/p&gt;
+
+&lt;h2&gt;jquery effect chaining&lt;/h2&gt;
+
+&lt;p&gt;Adding chains of methods on a single selector works to make complex effects.
+Such as adding delay(value) before a fadeout(value) function, to delay the effect.
+Also having the effects put one after the other, with delays and so forth delayed properly
+creates intricate effects that make everything look a lot more visually appealing.
+Such as, changing the plus icon to a tick, then fading the background to green to indicate
+success, then fading the whole element out completely.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>On Creating a Mobile Web</title>
+   <link href="vivaldi-va.github.io/blog/2012/11/03/on-creating-a-mobile-web/"/>
+   <updated>2012-11-03T00:00:00+02:00</updated>
+   <id>vivaldi-va.github.io/blog/2012/11/03/on-creating-a-mobile-web</id>
+   <content type="html">&lt;p&gt;In a world where devices are getting more portable as well as more numerous and have better access to a universal web, the concept of ‘responsive design’ is becoming more attractive every day. Being able to effectively use the same web on a device the size of a credit card, the same as you would on a desktop computer is, I believe, one of the greatest leaps in the internet’s relatively short history. Yet, as much of a logically sound idea responsive design may be, on first hearing of it, it is still stuck with the stigma of being a gimmick. It is abuzz word that is thrown around to attract customers or to show off skills of would-be designers or developers. It is a part of the HTML5 hype that is circling around the opinion-o-sphere that is web-media. However, it really goes, or should go, far, far beyond that. A mobile-friendly web is a must-have in the near future. Mobiles are becoming the primary way we access the net and we simply cannot avoid this trend. Responsive design is not a gimmick or anything like it, it’s a completely necessary, if over-hyped, method of designing the web.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2&gt;A brief history of grief&lt;/h2&gt;
+
+&lt;p&gt;But, before I give further insight into my own approach to responsive web, let me tell you a story of how my web-designer(ish) life came to be. My expansion into the web industry, for lack of a better description, has been shaped to a large extent by personal experience. I started looking into web design, or development, back when I first started high school at the lowly age of 12. My first website was a masterpiece, a crowning achievement of a week or so of work. All it was, was a blank page with a marquee (remember the marquee tag?) at the top that read “Under Construction”. It was, however, enough to launch me into a world of creating content for the web that would be shaped constantly for the next 9 years up until this very day. It was also the beginning of a new way of looking at the web, now I had a glimpse of how it works, I started to see how it really didn’t work for the most part.&lt;/p&gt;
+
+&lt;p&gt;Looking into web design made me see the inadequacies of what already existed around me. Websites then were just entering the ‘web 2.0’ hype phase, and overly-Photoshoped graphics and miniscule text were at the height of their popularity. I, for one, deplored this look increasingly as time went by. Filter-mangled graphics were an eyesore and had no reasonable purpose except to drag user’s barely-DSL speed connections down to something that could give continental drift a chance of catching up. I did try and follow the trend of graphic-based web design, making complex layouts, full of bevelled edges and shiny embossed buttons, but for the most part, I could never get it to work. It simply didn’t sit right, all I could see was the vivid colours and pseudo-3d design shouting at me from the page. It came as a great relief when, eventually, I discovered CSS style sheets for the first time. Their ability to add graphic qualities in subtle ways, without running performance or a user’s eyes, was a revolution to my young developer-self. I started to become increasingly repulsed by the still shiny and plastic design that existed all around.&lt;/p&gt;
+
+&lt;h2&gt;the tides change&lt;/h2&gt;
+
+&lt;p&gt;A few years on, I was working in Dominoes Pizza, as a lowly Customer Service Officer, taking orders and scrubbing dishes and organizing the freezer on weekends for a pittance. Yet, even though I had the same value as an answering machine, I still had to train, using their website-based lessons I had to complete. Their website, to put it lightly, was dreadful. Actually, it was not only dreadful, it was a damn-right debacle. It literally sucked the life out of my old desktop PC, and I don’t mean the limited ADSL we bad at the time. It literally used up all available physical performance just to have it open and that was before I had to navigate it’s shocking interface. It took at least an hour to figure out where these lessons I had to learn were and by the end of it I was so frustrated and angry I gave up on the whole thing. Much to the dislike of my managers. Yet, despite this probably causing me to lose that job, it gave me a renewed passion to create a better web. One that preferably didn’t melt the computer, or the user, trying to access it. As a result, I have tended to be quite minimalist in my approach to web design, something which is mentioned quite a bit my customers and casual observers alike. I continued to progress like this, yet I was in for another lesson that would fire me into a new, modern way of thinking about the web.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Such as it was, I became suddenly aware of the new realities of web design. Web design must be made mobile.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;All was well, I was messing around creating websites for myself, maybe learning a thing or two in the process. Until one day I was taking an ‘introduction into web design’ class at university, as an easy credit or two. After my tutor shared a few useful links with us, I read up on the increasingly popular method in which websites could be created in such a way that they would scale down for mobile phones. Such as it was, I became suddenly aware of the new realities of web design. Web design must be made mobile. Now, after that moment and the tutor that inspired it, I wound up in a situation in which my only access to the internet was through a recently purchased mobile phone and the free WiFi at a train station in town. I was forced to sit for as long as the battery held out, fiddling around on a screen the size of a business card, which had the processing power of a low-spec digital watch, and somehow use the internet. The same internet, no less, that everyone had been using for almost 20 years. It was a horrible experience. Websites, for the most part, weren’t anything close to usable on a device as small as what I was stuck with. I was forced to constantly zoom-in, pan around and rotate the screen to try and use any of the content, or functions or anything else. I would often click the wrong link, as they were far too small to be interacted with using my finger, which was to a mouse pointer what a tree trunk is to a toothpick. Clicking the wrong link meant I had to wait 5 minutes for the primitive processor to work its way through the new page, loading all the content, the graphics and anything else and when this was finished with, I had to go back and start it all over again. By an hour and a half, I had done what on a desktop would take me 5 minutes. My battery was dead, I was angry and in no mood to continue. One measly task (maybe) was completed after the whole ordeal. Something had to be done.&lt;/p&gt;
+
+&lt;h2&gt;the crusade against frustration&lt;/h2&gt;
+
+&lt;p&gt;Before this I was already quite interested in creating mobile-friendly websites as much as possible even if I didn’t need to, at least with as far as satisfying clients went. When a client wanted a simple website that had no frills and no fancy extras, like a site that catered for mobiles, I felt saddened that it wouldn’t have this added means of intractability. I was tempted to just do it anyway whether the client protested or not. The later week or so of torture that I went through was merely the last straw in a tirade of woe at the lack of mobile web access. The web must be mobile, to avoid making it so would be to deny the obvious truth, that mobiles, however slow, cumbersome, cheap and generally useless they may be at times, are still a fantastic means with which to access the internet. Their only real drawback is the web itself, it is this that is the cause for all the heartache and suffering that users endure. Such as it is, I want to cure this pain which I myself still feel, I commit myself to making everything as mobile-friendly as humanly possible, and damn the expense.&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>
