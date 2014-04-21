@@ -10,8 +10,11 @@ body {
   padding: 0 2em; }
 
 html {
-  font-size: 10px; }
+  font-size: 8px; }
 
+@media screen and (min-width: 60em) {
+  html {
+    font-size: 10px; } }
 body {
   font: 400 1.6rem/1.5 'Droid Sans';
   color: #4f4f4f; }
