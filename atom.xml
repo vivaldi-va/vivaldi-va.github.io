@@ -4,13 +4,56 @@
  <title>neueblog</title>
  <link href="vivaldi-va.github.io/atom.xml" rel="self"/>
  <link href="vivaldi-va.github.io/"/>
- <updated>2014-04-21T22:25:11+03:00</updated>
+ <updated>2014-04-21T22:54:18+03:00</updated>
  <id>vivaldi-va.github.io</id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Create a better AngularJS application structure using modules</title>
+   <link href="vivaldi-va.github.io/blog/2014/04/21/organization-with-angularjs-modules/"/>
+   <updated>2014-04-21T00:00:00+03:00</updated>
+   <id>vivaldi-va.github.io/blog/2014/04/21/organization-with-angularjs-modules</id>
+   <content type="html">&lt;p&gt;AngularJS&amp;#39; extensibility is not inherent in it&amp;#39;s design, rather it&amp;#39;s a
+feature that must be exploited to ensure efficient development and ease of
+comprehension. The first move should be to not have any functionality that,
+at the least, isn&amp;#39;t required to be used during the app&amp;#39;s initialization.
+While this is useful from an organizational perspective, it will make things
+messy when having to refer to the app&amp;#39;s root module all the time. What you can do
+instead is create modules for all the different aspects of Angular. Creating a
+module for your services, controllers, directives and so forth will not only allow
+for better organization of your project, but also optimise the use of plugins in the future.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;These modules should be initialized in your app.js (or the root script file for the project) as such:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;app-name&amp;gt;.&amp;lt;component&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]);&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// as many modules as you need with the same format&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Where &amp;#39;app name&amp;#39; is the root module name, say &amp;#39;App&amp;#39;, and the component is your services, controllers and so forth. Using this example, your controllers module would be initialized thusly:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;App.Controllers&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This module naming convention doesn&amp;#39;t follow any standard enforced by angular itself, rather it&amp;#39;s just an easy to comprehend format. Also note the empty array after the name, this is for injecting any third party modules you may wish to use. It&amp;#39;s required for initialization so either leave it empty or add something there if you have something.&lt;/p&gt;
+
+&lt;p&gt;Using the modules, now initialized in your app root, is done by referencing them. Creating a new controller would be therefor done as such:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;App.Controllers&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;FooCtrl&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;$scope&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/* controller stuff */&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}]);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Avoiding mystery: Missing UX in password fields on mobile devices</title>

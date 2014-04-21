@@ -62,6 +62,28 @@
 		<article class="posts-Post">
 			<header class="posts-PostHeader">
 				<h1 class="posts-PostHeader_Title">
+					<a href="/blog/2013/08/08/geolocation-in-angular-services/">
+						Using promises to return geopositioning data from an angular service
+					</a>
+				</h1>
+
+				<span class="posts-PostHeader_Date">08 Aug 2013</span>
+			</header>
+			<div class="posts-Post_Content">
+				<p>Due to an issue with the way angular handles dom changes, there is an interesting problem when
+attempting to send a position object from an angular service using a deferred promise.
+If you treated the geolocation API as an asynchronous function&mdash;which it is in practice&mdash;and
+used the $q service to return a deferred promise from an angular service, nothing will happen when you
+enact the .then() method in your controller.</p>
+
+			</div>
+			<footer class="posts-PostFooter"><a class="posts-PostFooter_MoreButton" href="/blog/2013/08/08/geolocation-in-angular-services/">Read more</a>
+			</footer>
+		</article>
+		
+		<article class="posts-Post">
+			<header class="posts-PostHeader">
+				<h1 class="posts-PostHeader_Title">
 					<a href="/blog/2012/12/07/ostosnero-development-blog-02/">
 						Ostosnero development blog 02 - Character Encoding Redux & SQL functions
 					</a>
